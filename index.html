@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa 2026 - Simulador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Space+Mono:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-container">
+        <div class="soccer-field">
+            <div class="field-grid"></div>
+            <svg class="field-lines" viewBox="0 0 1200 800" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="fieldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+                    </linearGradient>
+                </defs>
+                <line x1="600" y1="0" x2="600" y2="800" stroke="white" stroke-width="4" opacity="0.4"/>
+                <circle cx="600" cy="400" r="100" fill="none" stroke="white" stroke-width="3" opacity="0.3"/>
+                <circle cx="600" cy="400" r="15" fill="white" opacity="0.4"/>
+            </svg>
+        </div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <header class="header-epic">
+            <div class="header-content">
+                <div class="trophy-container">
+                    <div class="trophy-glow"></div>
+                    <img src="img\image-removebg-preview (1).png" alt="Troféu Copa 2026" class="trophy-image">
+                    <div class="trophy-shine"></div>
+                </div>
+                <h1 class="title-mega">
+                    <span class="title-word">COPA</span>
+                    <span class="title-number">2026</span>
+                </h1>
+                <p class="subtitle-epic">Simulador Oficial da Copa do Mundo</p>
+                <div class="header-underline"></div>
+            </div>
+        </header>
+
+        <!-- nav tabs -->
+        <nav class="tab-nav">
+            <div class="tab-nav-inner">
+                <button class="tab-btn active" data-tab="grupos">
+                    <i class="fas fa-futbol"></i>
+                    <span>Fase de Grupos</span>
+                </button>
+                <button class="tab-btn" data-tab="oitavas">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Oitavas</span>
+                </button>
+                <button class="tab-btn" data-tab="quartas">
+                    <i class="fas fa-star"></i>
+                    <span>Quartas</span>
+                </button>
+                <button class="tab-btn" data-tab="semifinal">
+                    <i class="fas fa-fire"></i>
+                    <span>Semifinal</span>
+                </button>
+                <button class="tab-btn tab-btn-final" data-tab="final">
+                    <i class="fas fa-crown"></i>
+                    <span>Final</span>
+                </button>
+                <button class="tab-btn tab-btn-sobre" data-tab="sobre">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Sobre</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- tab: grupos -->
+        <section class="tab-content active" id="tab-grupos">
+            <div class="container-fluid">
+                <div class="section-header-wrapper">
+                    <h2 class="section-title">
+                        <i class="fas fa-futbol icon-ball"></i>
+                        Fase de Grupos
+                        <span class="title-accent">Conheça a Distribuição dos Destinos</span>
+                    </h2>
+                </div>
+
+                <div class="sorteo-button-container">
+                    <button id="btn-sortear" class="btn-soccer">
+                        <span class="btn-soccer-background"></span>
+                        <span class="btn-soccer-shine"></span>
+                        <span class="btn-soccer-content">
+                            <i class="fas fa-dice"></i>
+                            <span>SORTEAR GRUPOS</span>
+                        </span>
+                    </button>
+                    <div class="button-field-glow"></div>
+                </div>
+
+                <div id="container-grupos" class="grupos-grid">
+                    <div class="grupos-placeholder">
+                        <div class="placeholder-content">
+                            <div class="spinner-ball">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <p>Clique no botão para iniciar o sorteio</p>
+                            <div class="pulse-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="btn-simular-wrapper" class="sorteo-button-container" style="display:none;">
+                    <button id="btn-simular" class="btn-soccer btn-soccer-green">
+                        <span class="btn-soccer-background"></span>
+                        <span class="btn-soccer-shine"></span>
+                        <span class="btn-soccer-content">
+                            <i class="fas fa-play-circle"></i>
+                            <span>SIMULAR CLASSIFICAÇÃO</span>
+                        </span>
+                    </button>
+                    <div class="button-field-glow"></div>
+                </div>
+
+                <div id="container-resultados-grupos"></div>
+            </div>
+        </section>
+
+        <!-- tab: oitavas -->
+        <section class="tab-content" id="tab-oitavas">
+            <div class="container-fluid">
+                <div class="section-header-wrapper">
+                    <h2 class="section-title">
+                        <i class="fas fa-shield-alt icon-ball"></i>
+                        Oitavas de Final
+                        <span class="title-accent">16 equipes em busca da glória</span>
+                    </h2>
+                </div>
+                <div id="container-oitavas" class="fase-matches-grid">
+                    <div class="phase-locked">
+                        <i class="fas fa-lock"></i>
+                        <p>Simule a fase de grupos primeiro</p>
+                    </div>
+                </div>
+                <div id="btn-oitavas-wrapper" class="sorteo-button-container" style="display:none;">
+                    <button id="btn-simular-oitavas" class="btn-soccer btn-soccer-green">
+                        <span class="btn-soccer-background"></span>
+                        <span class="btn-soccer-shine"></span>
+                        <span class="btn-soccer-content">
+                            <i class="fas fa-play-circle"></i>
+                            <span>SIMULAR OITAVAS</span>
+                        </span>
+                    </button>
+                    <div class="button-field-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- tab: quartas -->
+        <section class="tab-content" id="tab-quartas">
+            <div class="container-fluid">
+                <div class="section-header-wrapper">
+                    <h2 class="section-title">
+                        <i class="fas fa-star icon-ball"></i>
+                        Quartas de Final
+                        <span class="title-accent">8 equipes, apenas 4 avançam</span>
+                    </h2>
+                </div>
+                <div id="container-quartas" class="fase-matches-grid">
+                    <div class="phase-locked">
+                        <i class="fas fa-lock"></i>
+                        <p>Simule as oitavas de final primeiro</p>
+                    </div>
+                </div>
+                <div id="btn-quartas-wrapper" class="sorteo-button-container" style="display:none;">
+                    <button id="btn-simular-quartas" class="btn-soccer btn-soccer-green">
+                        <span class="btn-soccer-background"></span>
+                        <span class="btn-soccer-shine"></span>
+                        <span class="btn-soccer-content">
+                            <i class="fas fa-play-circle"></i>
+                            <span>SIMULAR QUARTAS</span>
+                        </span>
+                    </button>
+                    <div class="button-field-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- tab: semifinal -->
+        <section class="tab-content" id="tab-semifinal">
+            <div class="container-fluid">
+                <div class="section-header-wrapper">
+                    <h2 class="section-title">
+                        <i class="fas fa-fire icon-ball"></i>
+                        Semifinal
+                        <span class="title-accent">Quase lá — apenas 4 sonhos restam</span>
+                    </h2>
+                </div>
+                <div id="container-semifinal" class="fase-matches-grid fase-matches-grid--small">
+                    <div class="phase-locked">
+                        <i class="fas fa-lock"></i>
+                        <p>Simule as quartas de final primeiro</p>
+                    </div>
+                </div>
+                <div id="btn-semifinal-wrapper" class="sorteo-button-container" style="display:none;">
+                    <button id="btn-simular-semifinal" class="btn-soccer btn-soccer-green">
+                        <span class="btn-soccer-background"></span>
+                        <span class="btn-soccer-shine"></span>
+                        <span class="btn-soccer-content">
+                            <i class="fas fa-play-circle"></i>
+                            <span>SIMULAR SEMIFINAL</span>
+                        </span>
+                    </button>
+                    <div class="button-field-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- tab: final -->
+        <section class="tab-content" id="tab-final">
+            <div class="container-fluid">
+                <div class="section-header-wrapper">
+                    <h2 class="section-title">
+                        <i class="fas fa-crown icon-crown"></i>
+                        GRANDE FINAL
+                        <span class="title-accent">O Caminho para a Glória Eterna</span>
+                    </h2>
+                </div>
+                <div id="container-final" class="fase-matches-grid fase-matches-grid--final">
+                    <div class="phase-locked">
+                        <i class="fas fa-lock"></i>
+                        <p>Simule a semifinal primeiro</p>
+                    </div>
+                </div>
+                <div id="btn-final-wrapper" class="sorteo-button-container" style="display:none;">
+                    <button id="btn-simular-final" class="btn-soccer btn-soccer-gold">
+                        <span class="btn-soccer-background"></span>
+                        <span class="btn-soccer-shine"></span>
+                        <span class="btn-soccer-content">
+                            <i class="fas fa-trophy"></i>
+                            <span>SIMULAR A GRANDE FINAL</span>
+                        </span>
+                    </button>
+                    <div class="button-field-glow"></div>
+                </div>
+                <div id="container-campeao"></div>
+
+                <div id="btn-reiniciar-wrapper" class="sorteo-button-container" style="display:none;">
+                    <button id="btn-reiniciar" class="btn-soccer btn-soccer-reiniciar">
+                        <span class="btn-soccer-background"></span>
+                        <span class="btn-soccer-shine"></span>
+                        <span class="btn-soccer-content">
+                            <i class="fas fa-redo-alt"></i>
+                            <span>SIMULAR NOVAMENTE</span>
+                        </span>
+                    </button>
+                    <div class="button-field-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- tab: sobre -->
+        <section class="tab-content" id="tab-sobre">
+            <div class="container-fluid">
+                <div class="section-header-wrapper">
+                    <h2 class="section-title">
+                        <i class="fas fa-info-circle icon-ball"></i>
+                        Sobre a Aplicação
+                        <span class="title-accent">Tecnologias & Desenvolvimento</span>
+                    </h2>
+                </div>
+
+                <div class="sobre-grid">
+                    <div class="sobre-card sobre-card-dev">
+                        <div class="sobre-card-glow"></div>
+                        <div class="sobre-dev-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3 class="sobre-dev-name">Thiago Giancristoforo Miranda</h3>
+                        <p class="sobre-dev-role">Desenvolvedor Frontend</p>
+                        <p class="sobre-dev-desc">Projeto desenvolvido para o processo seletivo de Estágio em Desenvolvimento de Software 2026 — Katalyst Data Management.</p>
+                        <div class="sobre-dev-badge">
+                            <i class="fas fa-futbol"></i> Copa 2026 Simulator
+                        </div>
+                    </div>
+
+                    <div class="sobre-card sobre-card-tech">
+                        <div class="sobre-card-glow"></div>
+                        <h3 class="sobre-tech-title">Tecnologias Utilizadas</h3>
+                        <div class="tech-icons-grid">
+                            <div class="tech-icon-item">
+                                <div class="tech-icon-wrapper tech-html">
+                                    <svg viewBox="0 0 128 128" width="52" height="52">
+                                        <path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"/>
+                                        <path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"/>
+                                        <path fill="#EBEBEB" d="M64 52.455H45.788L44.532 38.361H64V24.599H29.044l.302 3.379 3.106 34.903H64zm0 35.204l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"/>
+                                        <path fill="#fff" d="M63.952 52.455v13.762h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.33 3.234-36.233.336-3.69h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z"/>
+                                    </svg>
+                                </div>
+                                <span class="tech-label">HTML5</span>
+                                <span class="tech-sublabel">Estrutura & Semântica</span>
+                            </div>
+
+                            <div class="tech-icon-item">
+                                <div class="tech-icon-wrapper tech-css">
+                                    <svg viewBox="0 0 128 128" width="52" height="52">
+                                        <path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"/>
+                                        <path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354H64.001v106.49z"/>
+                                        <path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114h-30.95z"/>
+                                        <path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.327-4.14-.979-10.975H33.752l1.928 21.609 28.313 7.858.09-.025z"/>
+                                        <path fill="#fff" d="M81.127 64.675l-1.666 18.522-15.426 4.164v14.319l28.273-7.858.208-2.337 2.406-26.81z"/>
+                                        <path fill="#EBEBEB" d="M64.048 23.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711zM64.001 51.431v13.831H45.917l-.277-3.108-.631-7.012-.33-3.711z"/>
+                                    </svg>
+                                </div>
+                                <span class="tech-label">CSS3</span>
+                                <span class="tech-sublabel">Estilo & Animações</span>
+                            </div>
+
+                            <div class="tech-icon-item">
+                                <div class="tech-icon-wrapper tech-js">
+                                    <svg viewBox="0 0 52 52" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="52" height="52" rx="8" fill="#f7df1e"/>
+                                        <text x="7" y="44" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#323330">JS</text>
+                                    </svg>
+                                </div>
+                                <span class="tech-label">JavaScript</span>
+                                <span class="tech-sublabel">Lógica & Interatividade</span>
+                            </div>
+
+                            <div class="tech-icon-item">
+                                <div class="tech-icon-wrapper tech-bootstrap">
+                                    <svg viewBox="0 0 52 52" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="52" height="52" rx="8" fill="#7952B3"/>
+                                        <text x="26" y="42" font-family="Georgia, serif" font-size="38" font-weight="bold" fill="white" text-anchor="middle">B</text>
+                                    </svg>
+                                </div>
+                                <span class="tech-label">Bootstrap 5</span>
+                                <span class="tech-sublabel">Layout & Responsividade</span>
+                            </div>
+
+                            <div class="tech-icon-item">
+                                <div class="tech-icon-wrapper tech-api">
+                                    <i class="fas fa-server" style="font-size:2.4rem; color:#4fc3f7;"></i>
+                                </div>
+                                <span class="tech-label">REST API</span>
+                                <span class="tech-sublabel">Katalyst / Geopost</span>
+                            </div>
+
+                            <div class="tech-icon-item">
+                                <div class="tech-icon-wrapper tech-fontawesome">
+                                    <i class="fab fa-font-awesome" style="font-size:2.4rem; color:#528dd3;"></i>
+                                </div>
+                                <span class="tech-label">Font Awesome</span>
+                                <span class="tech-sublabel">Ícones & UI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sobre-card sobre-card-features">
+                        <div class="sobre-card-glow"></div>
+                        <h3 class="sobre-tech-title">Funcionalidades</h3>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Busca das 32 seleções via API</li>
+                            <li><i class="fas fa-check-circle"></i> Sorteio aleatório em 8 grupos</li>
+                            <li><i class="fas fa-check-circle"></i> Simulação completa da fase de grupos</li>
+                            <li><i class="fas fa-check-circle"></i> Tabela de classificação com saldo de gols</li>
+                            <li><i class="fas fa-check-circle"></i> Mata-mata: Oitavas → Quartas → Semi → Final</li>
+                            <li><i class="fas fa-check-circle"></i> Pênaltis automáticos em empates</li>
+                            <li><i class="fas fa-check-circle"></i> Registro do campeão na API</li>
+                            <li><i class="fas fa-check-circle"></i> Interface animada e responsiva</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-epic">
+            <div class="footer-content">
+                <p class="footer-text">
+                    <i class="fas fa-soccer"></i>
+                    Simulador Copa 2026 • Desenvolvido por Thiago Giancristoforo Miranda <span class="heart">⚽</span>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
